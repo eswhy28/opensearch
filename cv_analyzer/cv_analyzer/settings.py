@@ -27,7 +27,7 @@ db = firestore.client()
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = 'sno=#4^e(^-i#i%@ozvp&kmstcr&w0_tsz)#ib#a18f9nw-br_'
 DEBUG = True
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*','192.168.5.122','0.0.0.0']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -75,8 +75,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://0.0.0.0:8000",
     "http://192.168.5.122:8000",
-    "http://35.187.69.136:8000",
-    "http://10.132.0.2:8000"
+    "http://35.187.69.136:8070",
+    "http://10.132.0.2:8070",
+    "http://192.168.3.202:8000"
 ]
 
 # Database
