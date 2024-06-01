@@ -19,6 +19,7 @@ import {
   Alert,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import config from './config';
 
 const Jobs = ({ user }) => {
   const [jobs, setJobs] = useState([]);
@@ -39,7 +40,7 @@ const Jobs = ({ user }) => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/cvs/job-descriptions', {
+        const response = await axios.get(`${config.apiUrl}/cvs/job-descriptions`, {
           headers: {
             Authorization: `Bearer ${user.stsTokenManager.accessToken}`
           }
@@ -76,7 +77,7 @@ const Jobs = ({ user }) => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/cvs/job-descriptions/',
+        `${config.apiUrl}/cvs/job-descriptions/`,
         { job_name: jobName, date_open: dateOpen, date_close: dateClose, description: description },
         {
           headers: {
@@ -102,7 +103,7 @@ const Jobs = ({ user }) => {
     setCandidatesLoading(true);
     setSelectedJobId(jobId);
     try {
-      const response = await axios.get(`http://localhost:8000/api/top-candidates/${jobId}/`, {
+      const response = await axios.get(`${config.apiUrl}/top-candidates/${jobId}/`, {
         headers: {
           Authorization: `Bearer ${user.stsTokenManager.accessToken}`
         }

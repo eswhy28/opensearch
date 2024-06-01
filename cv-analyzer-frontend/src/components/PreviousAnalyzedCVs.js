@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ResultList from './ResultList';
+import config from './config';
 
 const PreviousAnalyzedCVs = ({ user }) => {
   const [previousResults, setPreviousResults] = useState([]);
@@ -9,7 +10,7 @@ const PreviousAnalyzedCVs = ({ user }) => {
   useEffect(() => {
     const fetchPreviousResults = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/analysis-results/', {
+        const response = await axios.get(`${config.apiUrl}/analysis-results/`, {
           headers: {
             Authorization: `Bearer ${user.stsTokenManager.accessToken}`
           }

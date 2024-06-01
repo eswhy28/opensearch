@@ -3,6 +3,7 @@ import { Box, Button, Typography, Grid, CircularProgress, Paper, MenuItem, Selec
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import ResultList from './ResultList';
+import config from './config';
 
 const UploadForm = ({ user }) => {
   const [jobDescriptions, setJobDescriptions] = useState([]);
@@ -18,7 +19,7 @@ const UploadForm = ({ user }) => {
   useEffect(() => {
     const fetchJobDescriptions = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/cvs/job-descriptions', {
+        const response = await axios.get(`${config.apiUrl}/cvs/job-descriptions`, {
           headers: {
             Authorization: `Bearer ${user.stsTokenManager.accessToken}`
           }

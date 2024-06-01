@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Paper, Grid, Button, CircularProgress } from '@mui/material';
 import axios from 'axios';
-
+import config from './config';
 const Dashboard = ({ user, handleTabChange }) => {
   const [jobCounts, setJobCounts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,7 +9,7 @@ const Dashboard = ({ user, handleTabChange }) => {
   useEffect(() => {
     const fetchJobCounts = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/job-application-count', {
+        const response = await axios.get(`${config.apiUrl}/job-application-count`, {
           headers: {
             Authorization: `Bearer ${user.stsTokenManager.accessToken}`
           }
